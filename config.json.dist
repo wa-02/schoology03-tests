@@ -1,0 +1,16 @@
+{
+  "credentials": {
+    "Instructor01": {
+      "username": "",
+      "password": ""
+    },
+    "Instructor02": {
+      "username": "",
+      "password": ""
+    },
+    "Student01": {
+      "username": "",
+      "password": ""
+    }
+  }
+}
