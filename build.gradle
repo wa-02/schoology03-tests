@@ -31,6 +31,10 @@ dependencies {
     compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
 }
 
-test {
+task runFeatures (type: Test) {
     useTestNG()
+    options {
+        jvmArgs = ['-Dcucumber.options= -- glue org.example --plugin pretty']
+    }
+    testLogging.showStandardStreams = true
 }

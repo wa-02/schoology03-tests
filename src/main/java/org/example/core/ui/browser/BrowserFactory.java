@@ -1,4 +1,4 @@
-package org.example;
+package org.example.core.ui.browser;
 
 import java.util.HashMap;
 import java.util.Map;
