@@ -35,4 +35,9 @@ public class WebdriverAction {
     public String getText(final By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
+
+    public boolean isSubMenuExpanded(final By locator) {
+        ExpectedConditions.elementToBeClickable(locator);
+        return Boolean.parseBoolean(driver.findElement(locator).getAttribute("aria-expanded"));
+    }
 }
