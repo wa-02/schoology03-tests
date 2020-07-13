@@ -4,7 +4,6 @@ import org.example.core.ui.AbstractPage;
 import org.example.schoology.pages.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class CreateCoursePopup extends AbstractPage {
 
         fillFields(stepsMap);
 
-        createButtonField.click();
+        action.click(createButtonField);
     }
 
     private void fillFields(final Map<String, Step> stepsMap) {
@@ -44,22 +43,18 @@ public class CreateCoursePopup extends AbstractPage {
     }
 
     public void setCourseName(final String courseName) {
-        courseNameTextField.clear();
-        courseNameTextField.sendKeys(courseName);
+        action.setText(courseNameTextField, courseName);
     }
 
     public void setSectionName(final String section) {
-        sectionNameTextField.clear();
-        sectionNameTextField.sendKeys(section);
+        action.setText(sectionNameTextField, section);
     }
 
     public void setArea(final String area) {
-        Select subjectArea = new Select(subjectAreaDropdownField);
-        subjectArea.selectByVisibleText(area);
+        action.selectDropDown(subjectAreaDropdownField, area);
     }
 
     public void setLevel(final String level) {
-        Select levelField = new Select(levelDropdownField);
-        levelField.selectByVisibleText(level);
+        action.selectDropDown(levelDropdownField, level);
     }
 }

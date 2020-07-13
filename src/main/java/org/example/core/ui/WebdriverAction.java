@@ -50,7 +50,7 @@ public class WebdriverAction {
     }
 
     public boolean isSubMenuExpanded(final By locator) {
-        ExpectedConditions.elementToBeClickable(locator);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
         return Boolean.parseBoolean(driver.findElement(locator).getAttribute("aria-expanded"));
     }
 }

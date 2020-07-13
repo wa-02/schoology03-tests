@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 import org.example.core.ScenarioContext;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
-import org.example.schoology.pages.Login;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.courses.Courses;
 import org.example.schoology.pages.courses.CreateCoursePopup;
@@ -36,9 +35,9 @@ public class CourseStepDefs {
     }
 
     @And("I should see {string} in the page title")
-    public void iShouldSeeInThePageTitle(final String titleParam) {
+    public void iShouldSeeInThePageTitle(final String titleExpected) {
         String title = materials.getTitle();
-        assertEquals(title, titleParam);
+        assertEquals(title, titleExpected);
     }
 
     @Then("I should see {string} in the submenu")

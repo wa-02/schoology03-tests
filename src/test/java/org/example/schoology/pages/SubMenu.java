@@ -24,6 +24,6 @@ public class SubMenu extends AbstractPage {
 
     public String getCourseTitle(final String courseName) {
         String xPath =  String.format("//div[text()='%s']", courseName);
-        return driver.findElement(By.xpath(xPath)).getText();
+        return action.getText(By.xpath(xPath));
     }
 }

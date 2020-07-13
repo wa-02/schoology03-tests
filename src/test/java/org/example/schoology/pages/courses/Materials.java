@@ -9,6 +9,6 @@ public class Materials extends AbstractPage {
     private WebElement pageTitleField;
 
     public String getTitle() {
-        return pageTitleField.getText();
+        return action.getText(pageTitleField);
     }
 }
