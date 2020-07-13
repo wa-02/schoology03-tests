@@ -1,5 +1,6 @@
 package org.example.schoology.pages;
 
+import com.sun.org.apache.bcel.internal.generic.FSUB;
 import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,10 +14,20 @@ public class Home extends AbstractPage {
      * @param menuName {courses or groups}
      * @return {@link SubMenu}
      */
-    public SubMenu clickMenu(final String menuName) {
+    public SubMenu clickDropdownMenu(final String menuName) {
         By menu = By.xpath(String.format("//span[text()='%s']/parent::button", menuName));
         if (!action.isSubMenuExpanded(menu)) {
             action.click(menu);
+        }
+
+        return new SubMenu();
+    }
+
+    public SubMenu clickMenu(final String menuName) {
+        if (menuName.equals("Courses") || menuName.equals("Groups")) {
+            clickDropdownMenu(menuName);
+        } else {
+            action.click(By.xpath(String.format("//a[text()='%s']", menuName)));
         }
 
         return new SubMenu();
