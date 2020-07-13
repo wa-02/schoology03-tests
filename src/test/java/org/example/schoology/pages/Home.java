@@ -2,6 +2,7 @@ package org.example.schoology.pages;
 
 import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class Home extends AbstractPage {
 
@@ -13,7 +14,11 @@ public class Home extends AbstractPage {
      * @return {@link SubMenu}
      */
     public SubMenu clickMenu(final String menuName) {
-        action.click(By.xpath(String.format("//a[text()='%s']", menuName)));
+        By menu = By.xpath(String.format("//span[text()='%s']/parent::button", menuName));
+        if (!action.isSubMenuExpanded(menu)) {
+            action.click(menu);
+        }
+
         return new SubMenu();
     }
 

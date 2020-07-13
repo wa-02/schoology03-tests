@@ -48,4 +48,9 @@ public class WebdriverAction {
         Select selectField = new Select(webElement);
         selectField.selectByVisibleText(option);
     }
+
+    public boolean isSubMenuExpanded(final By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return Boolean.parseBoolean(driver.findElement(locator).getAttribute("aria-expanded"));
+    }
 }
