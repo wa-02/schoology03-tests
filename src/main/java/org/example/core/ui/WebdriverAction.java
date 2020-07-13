@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebdriverAction {
@@ -34,6 +35,18 @@ public class WebdriverAction {
 
     public String getText(final By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+    }
+
+    public void setText(final WebElement webElement, final String text) {
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+        webElement.clear();
+        webElement.sendKeys(text);
+    }
+
+    public void selectDropDown(final WebElement webElement, final String option) {
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+        Select selectField = new Select(webElement);
+        selectField.selectByVisibleText(option);
     }
 
     public boolean isSubMenuExpanded(final By locator) {
