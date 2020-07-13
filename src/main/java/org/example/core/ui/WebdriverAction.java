@@ -45,7 +45,7 @@ public class WebdriverAction {
 
     public void selectDropDown(final WebElement webElement, final String option) {
         wait.until(ExpectedConditions.visibilityOf(webElement));
-        Select titleSelect = new Select(webElement);
-        titleSelect.selectByVisibleText(option);
+        Select selectField = new Select(webElement);
+        selectField.selectByVisibleText(option);
     }
 }
