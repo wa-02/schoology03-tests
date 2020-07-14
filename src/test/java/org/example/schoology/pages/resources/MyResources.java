@@ -57,32 +57,7 @@ public class MyResources extends AbstractPage {
         return new DeletePopup();
     }
 
-    public String getMessage() {
-        wait.until(ExpectedConditions.visibilityOf(messageText));
-        return messageText.getText();
-    }
-
-    public boolean isResourceDisplayed(final String resourceName) {
-        try {
-//			// Changing timeout
-            driver.manage().timeouts().implicitlyWait(MIN_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
-            driver.findElement(By.xpath(String.format(RESOURCES_ACTIONS_BUTTON, resourceName)));
-            return true;
-        } catch (NoSuchElementException e) {
-            // nothing.
-        } finally {
-//			// Restore timeout
-            driver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
-        }
-        return false;
-    }
-
-    public void closeMessage() {
-        closeMessageButton.click();
-    }
-
     public void openQuestionBankResource(final String resourceName) {
         action.click(By.xpath(String.format(RESOURCE_NAME_LINK, resourceName)));
     }
-
 }

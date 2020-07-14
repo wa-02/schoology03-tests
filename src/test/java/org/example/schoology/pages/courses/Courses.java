@@ -30,12 +30,8 @@ public class Courses extends AbstractPage {
 
     public DeletePopup clickDeleteCourse(String courseName) {
         WebElement courseActionsButton = driver.findElement(By.xpath(String.format(COURSE_ACTIONS_BUTTON, courseName)));
-
-        // Scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", courseActionsButton);
-
-        courseActionsButton.click();
+        action.scrollToElement(courseActionsButton);
+        action.click(courseActionsButton);
         deleteCourse.click();
         return new DeletePopup();
     }
