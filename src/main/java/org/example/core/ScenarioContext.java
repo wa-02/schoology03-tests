@@ -19,7 +19,11 @@ public class ScenarioContext {
     }
 
     public void setContext(final String key, final String value) {
-        context.put(key, value);
+        String updatedValue = value;
+        if(context.containsKey(key)) {
+            updatedValue = value.concat(",").concat(context.get(key));
+        }
+        context.put(key, updatedValue);
     }
 
     public String getValue(final String key) {
