@@ -17,6 +17,7 @@ public class CommonStepDefs {
     private final Assertion assertion;
 
     private Home home;
+    private SubMenu subMenu;
 
     public CommonStepDefs(final SharedDriver sharedDriver, final AssertionGroup assertionGroup) {
         assertion = assertionGroup.getAssertion();
@@ -31,9 +32,21 @@ public class CommonStepDefs {
 
     @When("I navigate to {string}")
     public void navigateToPageInSubMenu(final String menu) {
-        SubMenu subMenu = home.clickMenu(menu);
+        subMenu = home.clickMenu(menu);
         subMenu.clickViewListLink(menu);
     }
+
+    @When("I navigate to {string} in the Profile Menu")
+    public void navigateToPageInProfileSubMenu(final String menu) {
+        subMenu = home.clickProfileMenu();
+        subMenu.clickProfileLink(menu);
+    }
+
+    @When("I navigate to {string} in the Account Menu")
+    public void navigateToPageInAccountSubMenu(final String menu) {
+        subMenu.clickAccountLink(menu);
+    }
+
 
     @Then("I should see the {string} message")
     public void verifyMessageIsDisplayed(final String message) {
