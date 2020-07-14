@@ -75,10 +75,14 @@ public class WebdriverAction {
         }
     }
 
-    public void selectCheckBox(final By locator) {
-        WebElement checkbox = driver.findElement(locator);
+    public void selectCheckBox(WebElement checkbox) {
         if (!checkbox.isSelected()) {
             click(checkbox);
         }
+    }
+
+    public void selectCheckBox(final By locator) {
+        WebElement checkbox = driver.findElement(locator);
+        selectCheckBox(checkbox);
     }
 }

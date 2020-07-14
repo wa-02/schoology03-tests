@@ -1,9 +1,7 @@
 package org.example.schoology.pages;
 
-import com.sun.org.apache.bcel.internal.generic.FSUB;
 import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class Home extends AbstractPage {
 
@@ -19,7 +17,6 @@ public class Home extends AbstractPage {
         if (!action.isSubMenuExpanded(menu)) {
             action.click(menu);
         }
-
         return new SubMenu();
     }
 
