@@ -8,4 +8,12 @@ public class SubMenu extends AbstractPage {
     public void clickViewListLink(final String menu) {
         action.click(By.cssSelector(String.format("a[href='/%s']", menu.toLowerCase())));
     }
+
+    public void clickProfileLink(final String menu) {
+        action.click(By.cssSelector(String.format("a[href*='/%s']", menu.toLowerCase())));
+    }
+
+    public void clickAccountLink(final String settingMenu) {
+        action.click(By.cssSelector(String.format("a[href='/settings/%s']", settingMenu.toLowerCase())));
+    }
 }

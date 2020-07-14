@@ -1,6 +1,7 @@
 package org.example.core.ui;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,5 +48,11 @@ public class WebdriverAction {
         wait.until(ExpectedConditions.visibilityOf(webElement));
         Select selectField = new Select(webElement);
         selectField.selectByVisibleText(option);
+    }
+
+    public void scrollToElement(final WebElement webElement){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView("
+                + "{ behavior: 'auto', block: 'center', inline: 'center'});", webElement);
     }
 }
