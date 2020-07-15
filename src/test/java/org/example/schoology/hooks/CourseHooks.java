@@ -11,11 +11,9 @@ import org.example.schoology.pages.courses.Courses;
 public class CourseHooks {
 
     private ScenarioContext context;
-    private Courses courses;
 
-    public CourseHooks(final ScenarioContext context, final Courses courses) {
+    public CourseHooks(final ScenarioContext context) {
         this.context = context;
-        this.courses = courses;
     }
 
     @After(value = "@deleteCourse")
@@ -25,13 +23,5 @@ public class CourseHooks {
         submenu.clickLink("My Courses");
         DeletePopup deleteCoursePopup = new Courses().clickDeleteCourse(context.getValue("CourseKey"));
         deleteCoursePopup.clickDeleteButton();
-    }
-
-    @After(value = "@deleteCourseFromMyList")
-    public void deleteCourseFromMyList() {
-        DriverFactory.getDriver().get("https://app.schoology.com");
-        SubMenu submenu = new Home().clickMenu("Courses");
-        submenu.clickLink("My Courses");
-        courses.clickDeleteCourse(context.getValue("CourseKey"));
     }
 }
