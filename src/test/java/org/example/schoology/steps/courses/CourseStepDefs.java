@@ -7,13 +7,13 @@ import org.example.core.ScenarioContext;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
-import org.example.schoology.pages.courses.Courses;
-import org.example.schoology.pages.courses.CreateCoursePopup;
-import org.example.schoology.pages.courses.Materials;
+import org.example.schoology.pages.courses.*;
+import org.example.schoology.pages.resources.MyResources;
 
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class CourseStepDefs {
     private final ScenarioContext context;
@@ -57,5 +57,37 @@ public class CourseStepDefs {
         SubMenu submenu = home.clickMenu("Courses");
         submenu.clickLink("My Courses");
         assertEquals(courses.getCourseTitle(courseTitle), courseTitle);
+    }
+
+    @And("I should see the Access Code")
+    public void iShouldSeeTheAccessCode() {
+        assertTrue(materials.getAccessCode());
+    }
+
+    @When("I join a Course")
+    public void iJoinACourse() {
+        SubMenu submenu = home.clickMenu("Courses");
+        submenu.clickLink("My Courses");
+        JoinACourse joinCourse = courses.clickJoinACourse();
+        joinCourse.joinCourse(materials.getAccessCodeString());
+    }
+
+    @When("I add a folder with:")
+    public void iAddAFolderWith(final Map<String, String> folderFields) {
+        CreateFolder folder = materials.addMaterial("Add Folder");
+        folder.create(folderFields);
+    }
+
+    @Then("I should see the folder {string}")
+    public void iShouldSeeTheFolder(final String folder) {
+        assertEquals(materials.getFolderTitle(), folder);
+    }
+
+    // Delete Course Defs
+    @When("I delete the course {string}")
+    public void iDeleteAllCreated(final String menuName) {
+        SubMenu submenu = home.clickMenu("Courses");
+        submenu.clickLink("My Courses");
+        courses.deleteCourse(menuName);
     }
 }

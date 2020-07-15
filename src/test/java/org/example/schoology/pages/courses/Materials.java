@@ -1,10 +1,14 @@
 package org.example.schoology.pages.courses;
 
+import org.apache.commons.lang3.StringUtils;
 import org.example.core.ui.AbstractPage;
 import org.example.schoology.pages.resources.ImportFromResourcesPopup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Materials extends AbstractPage {
     private static final String RESOURCE_XPATH =
@@ -18,6 +22,24 @@ public class Materials extends AbstractPage {
 
     @FindBy(css = ".import-library")
     private WebElement importFromResourceOption;
+
+    @FindBy(css = "span.enrollment-code")
+    private WebElement accessCodeField;
+
+    @FindBy(css = "div.course-content-action-links")
+    private WebElement addMaterialsDropdownField;
+
+    @FindBy(css = "div.folder-title")
+    private WebElement folderTitleField;
+
+    @FindBy(css = "li.action-create-folder")
+    private WebElement addFolderOption;
+
+    private Map<String, WebElement> materialOption = new HashMap<String, WebElement>() {{
+        put("Add Folder", addFolderOption);
+    }};
+
+    private String accessCode;
 
 
     public String getTitle() {
@@ -33,5 +55,24 @@ public class Materials extends AbstractPage {
     public boolean isResourceDisplayed(final String resourceName, final String resourceDescription) {
         return action.isElementPresent(By.xpath(String.format(RESOURCE_XPATH, resourceName, resourceDescription)),
                 3);
+    }
+
+    public boolean getAccessCode() {
+        accessCode = action.getText(accessCodeField);
+        return StringUtils.isNotEmpty(accessCode);
+    }
+
+    public CreateFolder addMaterial(final String materialName) {
+        action.click(addMaterialsDropdownField);
+        action.click(materialOption.get(materialName));
+        return new CreateFolder();
+    }
+
+    public String getAccessCodeString() {
+        return accessCode;
+    }
+
+    public String getFolderTitle() {
+        return action.getText(folderTitleField);
     }
 }

@@ -32,6 +32,10 @@ public class WebdriverAction {
                 .click();
     }
 
+    public void clickFakeButton(final By locator) {
+        driver.findElement(locator).click();
+    }
+
     public String getText(final WebElement webElement) {
         wait.until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();

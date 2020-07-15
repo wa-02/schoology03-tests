@@ -1,5 +1,4 @@
 package org.example.schoology.pages;
-
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,10 +24,12 @@ public class Login extends AbstractSchoologyModal {
     public Home loginAs(final String username, final String pass) {
         driver.manage().deleteAllCookies();
         driver.get("https://app.schoology.com/login");
-        usernameTextField.sendKeys(username);
-        passwordTextField.sendKeys(pass);
-        clickSubmitButton();
-        verifyYourAccount();
+        if (driver.getTitle().equals("Log in to Schoology")) {
+            usernameTextField.sendKeys(username);
+            passwordTextField.sendKeys(pass);
+            clickSubmitButton();
+            verifyYourAccount();
+        }
         return new Home();
     }
 
