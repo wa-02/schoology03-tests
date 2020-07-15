@@ -40,16 +40,16 @@ public class CreateFolder extends AbstractPage {
         }
     }
 
-    private void setTitle(String title) {
+    private void setTitle(final String title) {
         action.setText(titleTextField, title);
     }
 
-    private void setFolderColor(String color) {
+    private void setFolderColor(final String color) {
         String cssSelector = String.format("div[data-color='%s']", color);
         action.click(By.cssSelector(cssSelector));
     }
 
-    private void setAvailability(String availability) {
+    private void setAvailability(final String availability) {
         action.selectDropDown(availabilityDropdownField, availability);
     }
 }

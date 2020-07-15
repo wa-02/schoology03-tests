@@ -62,7 +62,7 @@ public class Materials extends AbstractPage {
         return StringUtils.isNotEmpty(accessCode);
     }
 
-    public CreateFolder addMaterial(String materialName) {
+    public CreateFolder addMaterial(final String materialName) {
         action.click(addMaterialsDropdownField);
         action.click(materialOption.get(materialName));
         return new CreateFolder();

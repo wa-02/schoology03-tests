@@ -12,12 +12,12 @@ public class JoinACourse extends AbstractPage {
     @FindBy(css = "input#edit-submit")
     private WebElement joinButton;
 
-    public void joinCourse(String code) {
+    public void joinCourse(final String code) {
         setAccessCode(code);
         action.click(joinButton);
     }
 
-    public void setAccessCode(String code) {
+    public void setAccessCode(final String code) {
         action.setText(accessCodeTextField, code);
     }
 }

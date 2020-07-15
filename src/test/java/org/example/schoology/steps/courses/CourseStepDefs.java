@@ -79,7 +79,7 @@ public class CourseStepDefs {
     }
 
     @Then("I should see the folder {string}")
-    public void iShouldSeeTheFolder(String folder) {
+    public void iShouldSeeTheFolder(final String folder) {
         assertEquals(materials.getFolderTitle(), folder);
     }
 
