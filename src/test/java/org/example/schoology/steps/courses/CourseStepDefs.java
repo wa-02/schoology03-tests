@@ -7,7 +7,10 @@ import org.example.core.ScenarioContext;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
-import org.example.schoology.pages.courses.*;
+import org.example.schoology.pages.courses.Courses;
+import org.example.schoology.pages.courses.CreateCoursePopup;
+import org.example.schoology.pages.courses.Materials;
+import org.example.schoology.pages.resources.MyResources;
 
 import java.util.Map;
 
@@ -15,14 +18,19 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class CourseStepDefs {
+    private final ScenarioContext context;
+
+    //Pages
     private Courses courses;
     private Home home;
     private Materials materials;
 
-    public CourseStepDefs(final SharedDriver driver, final Courses courses, final Materials materials, final ScenarioContext context) {
+    public CourseStepDefs(final SharedDriver driver, final Courses courses, final Materials materials,
+                          final ScenarioContext context) {
         this.courses = courses;
         this.materials = materials;
         home = new Home();
+        this.context = context;
     }
 
     @When("I create a course with:")
@@ -31,6 +39,7 @@ public class CourseStepDefs {
         submenu.clickLink("My Courses");
         CreateCoursePopup createCoursePopup = courses.clickCreateCourseButton();
         createCoursePopup.create(courseFieldData);
+        context.setContext("CourseKey", courseFieldData.get("name"));
     }
 
     @And("I should see {string} in the page title")
@@ -83,5 +92,4 @@ public class CourseStepDefs {
         submenu.clickLink("My Courses");
         courses.deleteCourse(menuName);
     }
-
 }

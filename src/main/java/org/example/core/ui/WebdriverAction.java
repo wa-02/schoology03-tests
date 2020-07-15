@@ -1,6 +1,7 @@
 package org.example.core.ui;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,6 +57,12 @@ public class WebdriverAction {
         selectField.selectByVisibleText(option);
     }
 
+    public void scrollToElement(final WebElement webElement){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView("
+                + "{ behavior: 'auto', block: 'center', inline: 'center'});", webElement);
+    }
+
     public boolean isSubMenuExpanded(final By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         return Boolean.parseBoolean(driver.findElement(locator).getAttribute("aria-expanded"));
@@ -75,10 +82,14 @@ public class WebdriverAction {
         }
     }
 
-    public void selectCheckBox(final By locator) {
-        WebElement checkbox = driver.findElement(locator);
+    public void selectCheckBox(WebElement checkbox) {
         if (!checkbox.isSelected()) {
             click(checkbox);
         }
+    }
+
+    public void selectCheckBox(final By locator) {
+        WebElement checkbox = driver.findElement(locator);
+        selectCheckBox(checkbox);
     }
 }
