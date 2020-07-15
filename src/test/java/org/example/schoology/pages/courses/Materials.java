@@ -7,6 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Materials extends AbstractPage {
     private static final String RESOURCE_XPATH =
             "//div[div[@class='item-title']/a[text()='%s']]/div[@class='item-body ']/p[text()='%s']";
@@ -29,6 +32,13 @@ public class Materials extends AbstractPage {
     @FindBy(css = "div.folder-title")
     private WebElement folderTitleField;
 
+    @FindBy(css = "li.action-create-folder")
+    private WebElement addFolderOption;
+
+    private Map<String, WebElement> materialOption = new HashMap<String, WebElement>() {{
+        put("Add Folder", addFolderOption);
+    }};
+
     private String accessCode;
 
 
@@ -42,11 +52,6 @@ public class Materials extends AbstractPage {
         return new ImportFromResourcesPopup();
     }
 
-    public boolean getAccessCode() {
-        accessCode = action.getText(accessCodeField);
-        return StringUtils.isNotEmpty(accessCode);
-    }
-
     public boolean isResourceDisplayed(final String resourceName, final String resourceDescription) {
         return action.isElementPresent(By.xpath(String.format(RESOURCE_XPATH, resourceName, resourceDescription)),
                 3);
@@ -58,7 +63,8 @@ public class Materials extends AbstractPage {
     }
 
     public CreateFolder addMaterial(String materialName) {
-        action.selectDropDown(addMaterialsDropdownField, materialName);
+        action.click(addMaterialsDropdownField);
+        action.click(materialOption.get(materialName));
         return new CreateFolder();
     }
 

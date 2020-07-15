@@ -2,6 +2,7 @@ package org.example.schoology.pages.courses;
 
 import org.example.core.ui.AbstractPage;
 import org.example.schoology.pages.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -26,7 +27,6 @@ public class CreateFolder extends AbstractPage {
         Map<String, Step> stepsMap = new HashMap<>();
         stepsMap.put("title", () -> setTitle(folderFields.get("title")));
         stepsMap.put("color", () -> setFolderColor(folderFields.get("color")));
-        stepsMap.put("description", () -> setDescription(folderFields.get("description")));
         stepsMap.put("Availability", () -> setAvailability(folderFields.get("Availability")));
 
         fillFields(stepsMap);
@@ -45,11 +45,8 @@ public class CreateFolder extends AbstractPage {
     }
 
     private void setFolderColor(String color) {
-        String xpath = String.format("div[data-color='%s']", color);
-    }
-
-    private void setDescription(String description) {
-        action.setText(descriptionTextField, description);
+        String cssSelector = String.format("div[data-color='%s']", color);
+        action.click(By.cssSelector(cssSelector));
     }
 
     private void setAvailability(String availability) {
