@@ -10,9 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractPage {
 
-	@FindBy(css = "#edit-submit")
-	protected WebElement submitButton;
-
 	public static final int DEFAULT_IMPLICIT_TIMEOUT = 15;
 	public static final int EXPLICIT_WAIT_IN_SECONDS = 20;
 

@@ -1,17 +1,17 @@
 Feature: Resources
 
-  @deleteResource
+  @deleteResource @softAssert
   Scenario: Create Question Bank Resource with questions
     Given I log in as "Instructor01" user
     When I navigate to "Resources"
       And I create a "Question Bank" resource with:
         | Name                     | Test Question Bank   |
         | Description              | Resource Description |
-        | Enable Question Tracking | yes                  |
+        | Enable Question Tracking | Yes                  |
       And I open the "Test Question Bank" question bank resource
       And I add a "True/False" question with:
       | Title          | Test Question 1 |
-      | Correct answer | False           |
+      | Correct Answer | False           |
       And I add a "Multiple Choice" question with:
         | Title           | Select Primary Colors |
         | Choices         | Red, Blue, Orange     |
@@ -21,7 +21,7 @@ Feature: Resources
       | Test Question 1       | True/False      |
       | Select Primary Colors | Multiple Choice |
 
-  @deleteResource
+  @deleteResource @softAssert
   Scenario: Add questions from question bank to Test/Quiz resource
     Given I log in as "Instructor01" user
       And I navigate to "Resources"
@@ -47,7 +47,7 @@ Feature: Resources
       | What is a subnet mask?            | Short-Answer/Essay Question |
       | Order the layers of the OSI Model | Ordering                    |
 
-  @deleteCourse @deleteResource
+  @deleteCourse @deleteResource @softAssert
   Scenario: Import resource to course from resources
     Given I log in as "Instructor01" user
       And I navigate to "Resources"

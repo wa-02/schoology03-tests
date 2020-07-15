@@ -32,13 +32,13 @@ public class Notifications extends ViewList {
 
     public Notifications setNotifications(final List<Map<String, String>> notifications) {
         notifications.forEach(this::setNotification);
-        action.click(submitButton);
+        clickSubmitButton();
         return this;
     }
 
     public Notifications resetNotifications(){
         action.click(turnOfAllNotificationsLink);
-        action.click(submitButton);
+        clickSubmitButton();
         return this;
     }
 

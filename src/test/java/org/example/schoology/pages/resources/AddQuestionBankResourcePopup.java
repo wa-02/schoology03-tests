@@ -1,7 +1,7 @@
 package org.example.schoology.pages.resources;
 
+import org.example.schoology.constants.Constants;
 import org.example.schoology.pages.Step;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -37,10 +37,10 @@ public class AddQuestionBankResourcePopup extends AddResourcePopupAbstract {
     @Override
     public Map<String, Step> getStepsMap(final Map<String, String> resourceMap) {
         Map<String, Step> stepsMap = new HashMap<>();
-        stepsMap.put("Name", () -> setName(resourceMap.get("Name")));
-        stepsMap.put("Description", () -> setDescription(resourceMap.get("Description")));
-        stepsMap.put("Enable Question Tracking", () -> enableQuestionTracking(resourceMap
-                .get("Enable Question Tracking").equalsIgnoreCase("yes")));
+        stepsMap.put(Constants.NAME, () -> setName(resourceMap.get(Constants.NAME)));
+        stepsMap.put(Constants.DESCRIPTION, () -> setDescription(resourceMap.get(Constants.DESCRIPTION)));
+        stepsMap.put(Constants.ENABLE_QUESTION_TRACKING, () -> enableQuestionTracking(resourceMap
+                .get(Constants.ENABLE_QUESTION_TRACKING).equalsIgnoreCase(Constants.YES)));
         return stepsMap;
     }
 }
