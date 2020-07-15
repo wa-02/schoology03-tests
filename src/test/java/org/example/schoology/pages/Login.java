@@ -36,7 +36,6 @@ public class Login extends AbstractPage {
             loginButton.click();
             verifyYourAccount();
         }
-//        driver.getTitle().equals("Log In to Schoology")
         return new Home();
     }
 
