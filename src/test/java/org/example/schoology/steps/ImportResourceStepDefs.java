@@ -7,9 +7,6 @@ import org.example.core.ScenarioContext;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.courses.Materials;
 import org.example.schoology.pages.resources.ImportFromResourcesPopup;
-import org.example.schoology.pages.resources.MyResources;
-import org.example.schoology.pages.resources.QuestionBankResource;
-import org.example.schoology.pages.resources.QuizResource;
 import org.testng.asserts.Assertion;
 
 public class ImportResourceStepDefs {

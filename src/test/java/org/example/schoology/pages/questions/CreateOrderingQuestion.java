@@ -1,5 +1,6 @@
 package org.example.schoology.pages.questions;
 
+import org.example.schoology.constants.Constants;
 import org.example.schoology.pages.Step;
 
 import java.util.HashMap;
@@ -19,8 +20,8 @@ public class CreateOrderingQuestion extends CreateQuestionAbstract {
     @Override
     public Map<String, Step> getStepsMap(Map<String, String> questionMap) {
         Map<String, Step> stepsMap = new HashMap<>();
-        stepsMap.put("Title", () -> setTitle(questionMap.get("Title")));
-        stepsMap.put("Items", () -> setItems(questionMap.get("Items")));
+        stepsMap.put(Constants.TITLE, () -> setTitle(questionMap.get(Constants.TITLE)));
+        stepsMap.put(Constants.ITEMS, () -> setItems(questionMap.get(Constants.ITEMS)));
         return stepsMap;
     }
 

@@ -48,7 +48,7 @@ public class AccountSettings extends ViewList {
         for (final String keyField : settings.keySet()) {
             stepsMap.get(keyField).execute();
         }
-        action.click(submitButton);
+        clickSubmitButton();
         return this;
     }
 }

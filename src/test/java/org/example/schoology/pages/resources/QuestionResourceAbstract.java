@@ -1,6 +1,7 @@
 package org.example.schoology.pages.resources;
 
 import org.example.core.ui.AbstractPage;
+import org.example.schoology.constants.Constants.QuestionType;
 import org.example.schoology.pages.AppPageFactory;
 import org.example.schoology.pages.questions.CreateQuestionAbstract;
 import org.openqa.selenium.By;
@@ -18,14 +19,14 @@ public abstract class QuestionResourceAbstract extends AbstractPage {
 
     private static final By QUESTION_TYPE_BY = By.cssSelector(".component-type");
 
-    private static final Map<String, String> QUESTION_TYPE_HREF = new HashMap<>();
+    private static final Map<QuestionType, String> QUESTION_TYPE_HREF = new HashMap<>();
     static {
-        QUESTION_TYPE_HREF.put("True/False", "true_false");
-        QUESTION_TYPE_HREF.put("Multiple Choice", "multiple_choice");
-        QUESTION_TYPE_HREF.put("Ordering", "ordering");
-        QUESTION_TYPE_HREF.put("Short-Answer/Essay Question", "essay");
-        QUESTION_TYPE_HREF.put("Fill in the Blank", "fitb");
-        QUESTION_TYPE_HREF.put("Matching", "matching");
+        QUESTION_TYPE_HREF.put(QuestionType.TRUE_FALSE, "true_false");
+        QUESTION_TYPE_HREF.put(QuestionType.MULTIPLE_CHOICE, "multiple_choice");
+        QUESTION_TYPE_HREF.put(QuestionType.ORDERING, "ordering");
+        QUESTION_TYPE_HREF.put(QuestionType.SHORT_ANSWER_ESSAY_QUESTION, "essay");
+        QUESTION_TYPE_HREF.put(QuestionType.FILL_IN_THE_BLANK, "fitb");
+        QUESTION_TYPE_HREF.put(QuestionType.MATCHING, "matching");
     }
 
     @FindBy(css = "div#collection-title span.active")
@@ -33,7 +34,8 @@ public abstract class QuestionResourceAbstract extends AbstractPage {
 
     public CreateQuestionAbstract openCreateQuestion(final String questionType) {
         action.click(getAddQuestionBtn());
-        action.click(By.cssSelector(String.format(QUESTION_TYPE_CSS, QUESTION_TYPE_HREF.get(questionType))));
+        action.click(By.cssSelector(String.format(QUESTION_TYPE_CSS,
+                QUESTION_TYPE_HREF.get(QuestionType.getQuestionType(questionType)))));
         return AppPageFactory.getCreateQuestion(questionType);
     }
 

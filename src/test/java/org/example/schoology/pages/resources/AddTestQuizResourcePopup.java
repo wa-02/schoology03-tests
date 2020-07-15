@@ -1,5 +1,6 @@
 package org.example.schoology.pages.resources;
 
+import org.example.schoology.constants.Constants;
 import org.example.schoology.pages.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,7 +27,7 @@ public class AddTestQuizResourcePopup extends AddResourcePopupAbstract {
     @Override
     protected Map<String, Step> getStepsMap(Map<String, String> resourceMap) {
         Map<String, Step> stepsMap = new HashMap<>();
-        stepsMap.put("Name", () -> setName(resourceMap.get("Name")));
+        stepsMap.put(Constants.NAME, () -> setName(resourceMap.get(Constants.NAME)));
         stepsMap.put("Max points", () -> setMaxPoints(resourceMap.get("Max points")));
         return stepsMap;
     }

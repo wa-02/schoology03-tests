@@ -38,7 +38,7 @@ public class PrivacySettings extends ViewList {
 
     public PrivacySettings setUserPrivacySettings(final List<Map<String, String>> privacySettings) {
         privacySettings.forEach(this::setUserPrivacySetting);
-        action.click(submitButton);
+        clickSubmitButton();
         return this;
     }
 
@@ -52,7 +52,7 @@ public class PrivacySettings extends ViewList {
     public PrivacySettings resetUserPrivacySetting(){
         List<WebElement> schoolPrivacySettingsNotSelected = driver.findElements(USER_PRIVACY_SCHOOL_SETTING_NOT_SELECTED);
         schoolPrivacySettingsNotSelected.forEach(setting -> action.click(setting));
-        action.click(submitButton);
+        clickSubmitButton();
         return this;
     }
 }

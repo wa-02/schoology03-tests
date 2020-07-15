@@ -1,15 +1,13 @@
 package org.example.schoology.pages.resources;
 
 import org.example.core.ui.AbstractPage;
+import org.example.schoology.constants.Constants;
 import org.example.schoology.pages.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AddResourcePopupAbstract extends AbstractPage {
@@ -27,7 +25,7 @@ public abstract class AddResourcePopupAbstract extends AbstractPage {
         }
         submitButton.click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(RESOURCE_NAME_XPATH,
-                resourceMap.get("Name")))));
+                resourceMap.get(Constants.NAME)))));
         return new MyResources();
     }
 

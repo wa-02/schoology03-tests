@@ -1,6 +1,6 @@
 package org.example.schoology.pages.questions;
 
-import org.example.core.ui.AbstractPage;
+import org.example.schoology.pages.AbstractSchoologyModal;
 import org.example.schoology.pages.Step;
 import org.example.schoology.pages.resources.QuestionBankResource;
 import org.openqa.selenium.WebElement;
@@ -9,16 +9,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
 
-public abstract class CreateQuestionAbstract extends AbstractPage {
+public abstract class CreateQuestionAbstract extends AbstractSchoologyModal {
 
     @FindBy(css = "#edit-title_ifr")
     private WebElement titleIframe;
 
     @FindBy(css = "body[onload*='edit-title']")
     private WebElement titleBody;
-
-    @FindBy(css = "#edit-submit")
-    protected WebElement createQuestionButton;
 
     protected void setTitle(final String title) {
         String parentWindowHandle = driver.getWindowHandle();
@@ -33,7 +30,7 @@ public abstract class CreateQuestionAbstract extends AbstractPage {
     public QuestionBankResource createQuestion(Map<String, String> questionMap) {
         Map<String, Step> stepsMap = getStepsMap(questionMap);
         questionMap.keySet().forEach(keyField -> stepsMap.get(keyField).execute());
-        action.click(createQuestionButton);
+        clickSubmitButton();
         return new QuestionBankResource();
     }
 

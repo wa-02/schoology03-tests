@@ -1,14 +1,12 @@
 package org.example.schoology.pages;
 
-import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class Login extends AbstractPage {
+public class Login extends AbstractSchoologyModal {
 
     // This info should come from config file.
     public static final int DEFAULT_IMPLICIT_TIMEOUT = 15;
@@ -20,9 +18,6 @@ public class Login extends AbstractPage {
     @FindBy(css = "#edit-pass")
     private WebElement passwordTextField;
 
-    @FindBy(css = "#edit-submit")
-    private WebElement loginButton;
-
     @FindBy(css = "#confirmation_cancel")
     private WebElement cancelVerifyYourAccountButton;
 
@@ -32,7 +27,7 @@ public class Login extends AbstractPage {
         driver.get("https://app.schoology.com/login");
         usernameTextField.sendKeys(username);
         passwordTextField.sendKeys(pass);
-        loginButton.click();
+        clickSubmitButton();
         verifyYourAccount();
         return new Home();
     }

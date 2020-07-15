@@ -1,5 +1,6 @@
 package org.example.schoology.pages.questions;
 
+import org.example.schoology.constants.Constants;
 import org.example.schoology.pages.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,8 +19,8 @@ public class CreateEssayQuestion extends CreateQuestionAbstract {
     @Override
     protected Map<String, Step> getStepsMap(Map<String, String> questionMap) {
         Map<String, Step> stepsMap = new HashMap<>();
-        stepsMap.put("Title", () -> setTitle(questionMap.get("Title")));
-        stepsMap.put("Character Limit", () -> setCharacterLimit(questionMap.get("Character Limit")));
+        stepsMap.put(Constants.TITLE, () -> setTitle(questionMap.get(Constants.TITLE)));
+        stepsMap.put(Constants.CHARACTER_LIMIT, () -> setCharacterLimit(questionMap.get(Constants.CHARACTER_LIMIT)));
         return stepsMap;
     }
 

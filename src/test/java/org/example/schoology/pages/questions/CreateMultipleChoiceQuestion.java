@@ -1,5 +1,6 @@
 package org.example.schoology.pages.questions;
 
+import org.example.schoology.constants.Constants;
 import org.example.schoology.pages.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -25,9 +26,9 @@ public class CreateMultipleChoiceQuestion extends CreateQuestionAbstract {
     @Override
     public Map<String, Step> getStepsMap(final Map<String, String> questionMap) {
         Map<String, Step> stepsMap = new HashMap<>();
-        stepsMap.put("Title", () -> setTitle(questionMap.get("Title")));
-        stepsMap.put("Choices", () -> setChoices(questionMap.get("Choices")));
-        stepsMap.put("Correct Answers", () -> selectCorrectAnswers(questionMap.get("Correct Answers")));
+        stepsMap.put(Constants.TITLE, () -> setTitle(questionMap.get(Constants.TITLE)));
+        stepsMap.put(Constants.CHOICES, () -> setChoices(questionMap.get(Constants.CHOICES)));
+        stepsMap.put(Constants.CORRECT_ANSWERS, () -> selectCorrectAnswers(questionMap.get(Constants.CORRECT_ANSWERS)));
         return stepsMap;
     }
 

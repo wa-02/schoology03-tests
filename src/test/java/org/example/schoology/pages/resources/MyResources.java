@@ -4,16 +4,11 @@ import org.example.core.ui.AbstractPage;
 import org.example.schoology.pages.AppPageFactory;
 import org.example.schoology.pages.DeletePopup;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import static org.example.schoology.pages.Login.MIN_IMPLICIT_TIMEOUT;
 
 public class MyResources extends AbstractPage {
 
