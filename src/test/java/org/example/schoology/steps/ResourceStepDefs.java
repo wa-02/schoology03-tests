@@ -6,10 +6,11 @@ import io.cucumber.java.en.When;
 import org.example.core.AssertionGroup;
 import org.example.core.ScenarioContext;
 import org.example.core.ui.SharedDriver;
+import org.example.schoology.constants.Constants;
 import org.example.schoology.pages.AppPageFactory;
+import org.example.schoology.pages.questions.CreateQuestionAbstract;
 import org.example.schoology.pages.questions.ImportQuestionPopup;
 import org.example.schoology.pages.resources.AddResourcePopupAbstract;
-import org.example.schoology.pages.questions.CreateQuestionAbstract;
 import org.example.schoology.pages.resources.ImportFromQuestionBanks;
 import org.example.schoology.pages.resources.MyResources;
 import org.example.schoology.pages.resources.QuestionBankResource;
@@ -42,7 +43,7 @@ public class ResourceStepDefs {
         myResources = new MyResources();
         AddResourcePopupAbstract addResourcePopup = myResources.clickAddResources(resourceType);
         addResourcePopup.addResource(resourceMap);
-        context.setContext("ResourceKey", resourceMap.get("Name"));
+        context.setContext(Constants.RESOURCE_KEY, resourceMap.get(Constants.NAME));
     }
 
     @When("I open the {string} question bank resource")
@@ -74,9 +75,9 @@ public class ResourceStepDefs {
         QuestionResourceAbstract questionResource = AppPageFactory.getQuestionResource(resourceType);
         assertion.assertEquals(questionResource.getResourceName(), resourceName);
         questionsTable.asMaps().forEach(questionMap -> {
-            assertion.assertTrue(questionResource.isQuestionDisplayed(questionMap.get("Title")));
-            assertion.assertEquals(questionResource.getQuestionTypeByTitle(questionMap.get("Title")),
-                    questionMap.get("Question Type"));
+            assertion.assertTrue(questionResource.isQuestionDisplayed(questionMap.get(Constants.TITLE)));
+            assertion.assertEquals(questionResource.getQuestionTypeByTitle(questionMap.get(Constants.TITLE)),
+                    questionMap.get(Constants.QUESTION_TYPE));
         });
     }
 }

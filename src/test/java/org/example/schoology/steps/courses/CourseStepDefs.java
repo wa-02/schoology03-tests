@@ -10,7 +10,6 @@ import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.courses.Courses;
 import org.example.schoology.pages.courses.CreateCoursePopup;
 import org.example.schoology.pages.courses.Materials;
-import org.example.schoology.pages.resources.MyResources;
 
 import java.util.Map;
 
