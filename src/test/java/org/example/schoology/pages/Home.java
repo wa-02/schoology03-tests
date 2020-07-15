@@ -1,9 +1,8 @@
 package org.example.schoology.pages;
 
-import com.sun.org.apache.bcel.internal.generic.FSUB;
 import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Home extends AbstractPage {
 
@@ -16,6 +15,7 @@ public class Home extends AbstractPage {
      */
     public SubMenu clickDropdownMenu(final String menuName) {
         By menu = By.xpath(String.format("//span[text()='%s']/parent::button", menuName));
+        wait.until(ExpectedConditions.elementToBeClickable(menu));
         if (!action.isSubMenuExpanded(menu)) {
             action.click(menu);
         }

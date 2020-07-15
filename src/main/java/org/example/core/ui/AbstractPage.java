@@ -24,4 +24,8 @@ public abstract class AbstractPage {
 		this.action = new WebdriverAction(driver, wait);
 		PageFactory.initElements(driver, this);
 	}
+
+	public String getTitle() {
+		return driver.getTitle();
+	}
 }

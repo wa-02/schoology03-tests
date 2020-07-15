@@ -30,10 +30,13 @@ public class Login extends AbstractPage {
     public Home loginAs(final String username, final String pass) {
         driver.manage().deleteAllCookies();
         driver.get("https://app.schoology.com/login");
-        usernameTextField.sendKeys(username);
-        passwordTextField.sendKeys(pass);
-        loginButton.click();
-        verifyYourAccount();
+        if (driver.getTitle().equals("Log in to Schoology")) {
+            usernameTextField.sendKeys(username);
+            passwordTextField.sendKeys(pass);
+            loginButton.click();
+            verifyYourAccount();
+        }
+//        driver.getTitle().equals("Log In to Schoology")
         return new Home();
     }
 
